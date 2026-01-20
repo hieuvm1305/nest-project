@@ -1,23 +1,29 @@
 
+Nest use DI pattern, class OOP and is simmilar to Spring boot of Java
+The project connect to Postgres database with TypeORM and use migration to control db changes.
 ## Project setup
-
 ```bash
-$ yarn install
+$ yarn
 ```
-
 ## Compile and run the project
-
-```bash
 # development
-$ yarn run start
+$ yarn start
 
 # watch mode
-$ yarn run start:dev
+$ yarn start:dev
 
 # production mode
-$ yarn run start:prod
+$ yarn start:prod
 ```
+# nest cli
+$ nest g module ${ModuleName}
+$ nest g controller ${ControllerName}
+$ nest g service ${ServiceName}
+$ nest g guard auth
+cli command to generate resource(rcmd)
+$ nest g resource ${resourceName}
 # generate migration
+
 ```bash
 $ yarn run migration:generate -- src/migrations/${MigrationName}
 ```
