@@ -6,6 +6,7 @@ import {
   CreateUserDto,
   SearchDto,
   SearchResponseDto,
+  UpdateUserDto,
   UserResponseDto,
 } from './user.dto';
 import { Like } from 'typeorm';
@@ -43,6 +44,15 @@ export class UserService {
       throw new Error('User not found');
     }
     return new UserResponseDto(user);
+  }
+
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    const idNumber = Number(id);
+    const user = await this.userRepository.findOneBy({ id: idNumber });
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return this.userRepository.save({ ...user, ...updateUserDto });
   }
 
   async findBySearch(searchData: SearchDto): Promise<SearchResponseDto> {

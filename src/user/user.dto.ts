@@ -4,6 +4,7 @@ import {
   IsString,
   IsNumber,
   IsOptional,
+  IsBoolean,
 } from 'class-validator';
 import { User } from './entities/user.entity';
 
@@ -68,4 +69,26 @@ export class SearchResponseDto {
   total: number;
   page: number;
   limit: number;
+}
+
+export class UpdateUserDto {
+  @IsString()
+  @IsOptional()
+  fullName?: string;
+
+  @IsString()
+  @IsOptional()
+  phone?: string;
+
+  @IsBoolean()
+  @IsOptional()
+  isActive?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  isSuperuser?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  isStaff?: boolean;
 }

@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreateUserDto, SearchDto } from './user.dto';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { CreateUserDto, SearchDto, UpdateUserDto } from './user.dto';
 import { UserService } from './user.service';
 @Controller('user')
 export class UserController {
@@ -23,5 +23,10 @@ export class UserController {
   @Post('search')
   search(@Body() searchDto: SearchDto) {
     return this.userService.findBySearch(searchDto);
+  }
+
+  @Put('update/:id')
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
   }
 }
